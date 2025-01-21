@@ -27,8 +27,8 @@ El entorno de desarrollo está completamente configurado para trabajar con **Doc
 
 1. **Clonar el repositorio**:
 ```bash
-git clone <repo-url>
-cd <repo-directory>
+git clone [<repo-url>](https://github.com/dianderas/spring-microservices.git)
+cd spring-microservices
 ```
 
 2. **Ejecutar el entorno de desarrollo**
