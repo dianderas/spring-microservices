@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  config-service:
+    container_name: config-service
+    build:
+      context: ./microservice.config
+    ports:
+      - "8888:8888"
+    networks:
+      - microservices-network
+
+  eureka-service:
+    depends_on:
+      - config-service
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://config-service:8888/actuator/health" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    container_name: eureka-service
+    build:
+      context: ./microservice.eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: sincl4ve15101
+      POSTGRES_DB: communitydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sincl4ve15101
+      MYSQL_DATABASE: memberdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - microservices-network
+
+volumes:
+  postgres-data:
+  mysql-data:
+
+networks:
+  microservices-network:
+    driver: bridge
