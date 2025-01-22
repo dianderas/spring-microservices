@@ -2,12 +2,12 @@ server:
   port: 8888
 
 spring:
-  profiles:
-    active: native
   application:
     name: microservice-config
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/configurations
+        git:
+          uri: https://github.com/dianderas/demo-microservice-config-files.git
+          search-paths: "{application}"
+          default-label: main

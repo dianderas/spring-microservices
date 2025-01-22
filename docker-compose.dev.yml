@@ -13,16 +13,13 @@ services:
   eureka-service:
     depends_on:
       - config-service
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://config-service:8888/actuator/health" ]
-      interval: 5s
-      timeout: 3s
-      retries: 5
     container_name: eureka-service
     build:
       context: ./microservice.eureka
     ports:
       - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
     networks:
       - microservices-network
 
