@@ -79,6 +79,9 @@ A continuación se describen las tareas pendientes para completar y mejorar la i
 - **Implementar seguridad OAuth2**  
   Configurar e implementar seguridad con OAuth2 para asegurar los servicios y permitir el control de acceso basado en roles.
 
+- **Implementar Apacha Kafka para comunicacion Asincrona**  
+  Crear y configurar un servicio utilizando Spring WebFlux para gestionar peticiones de manera reactiva y no bloqueante.
+
 - **Implementar un servicio usando Spring WebFlux**  
   Crear y configurar un servicio utilizando Spring WebFlux para gestionar peticiones de manera reactiva y no bloqueante.
 
